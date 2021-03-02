@@ -18,4 +18,4 @@ jobs:
           dockerfile: ./docker/Dockerfile.production
           # target: prod
           # context: .
-          build_args: API_URL=${{ secrects.API_URL }},B=bar
+          build_args: VUE_APP_API_URL=${{ secrets.VUE_APP_API_URL }},B=bar
