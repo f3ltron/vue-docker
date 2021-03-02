@@ -1,0 +1,11 @@
+FROM node:lts-alpine
+
+EXPOSE 8080
+
+RUN mkdir -p /usr/src/app
+
+WORKDIR /usr/src/app
+
+RUN yarn
+
+CMD ["yarn", "serve"]

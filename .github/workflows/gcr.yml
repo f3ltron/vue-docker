@@ -1,0 +1,21 @@
+name: Push to GCR GitHub Action
+on: 
+  push:
+    branches:
+      - master
+jobs:
+  build-and-push-to-gcr:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: RafikFarhad/push-to-gcr-github-action@v3.0.2
+        with:
+          gcloud_service_key: ${{ secrets.GCLOUD_SERVICE_KEY }}
+          registry: gcr.io
+          project_id: vue-app-306421
+          image_name: test
+          image_tag: latest,production
+          dockerfile: ./docker/Dockerfile.production
+          # target: prod
+          # context: .
+          build_args: API_URL=${{ secrects.API_URL }},B=bar
